@@ -1,0 +1,23 @@
+[
+  {
+    "id": "demo-001",
+    "name": "SanDisk Ultra SSD 500GB",
+    "description": "Sample payload to demonstrate HTTP CRUD semantics across different protocol experiments.",
+    "price": 129.99,
+    "active": true
+  },
+  {
+    "id": "demo-002",
+    "name": "Western Digital Blue HDD 1TB",
+    "description": "Sample payload to demonstrate HTTP CRUD semantics across different protocol experiments.",
+    "price": 59.49,
+    "active": true
+  },
+  {
+    "id": "demo-003",
+    "name": "Samsung 980 NVMe 250GB",
+    "description": "Sample payload to demonstrate HTTP CRUD semantics across different protocol experiments.",
+    "price": 79.99,
+    "active": false
+  }
+]
