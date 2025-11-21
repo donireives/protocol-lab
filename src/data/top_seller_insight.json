@@ -1,0 +1,33 @@
+{
+  "period": "2025-Q1",
+  "generatedAt": "2025-03-01T09:00:00Z",
+  "topSeller": {
+    "productId": "demo-001",
+    "productName": "SanDisk Ultra SSD 500GB",
+    "unitsSold": 18450,
+    "revenue": 2395630,
+    "averageOrderValue": 129.8,
+    "growthRatePct": 12.7,
+    "channelMix": {
+      "marketplace": 0.58,
+      "distribution": 0.3,
+      "retail": 0.12
+    }
+  },
+  "customerSignals": [
+    "Enterprise refresh cycle accelerated after tax incentives.",
+    "Direct-to-consumer flash sale improved repeat purchases."
+  ],
+  "regionalBreakdown": [
+    { "region": "Indonesia", "percentage": 0.44 },
+    { "region": "Singapore", "percentage": 0.18 },
+    { "region": "Malaysia", "percentage": 0.16 },
+    { "region": "Vietnam", "percentage": 0.12 },
+    { "region": "Others", "percentage": 0.1 }
+  ],
+  "nextActions": [
+    "Bundle NVMe accessories for Ramadan campaign.",
+    "Shift 15 percent of ad spend to SEA marketplaces with low CAC.",
+    "Plan limited edition midnight launch to maintain hype."
+  ]
+}

@@ -1,9 +1,11 @@
 import express from 'express';
 import { createHandler } from 'graphql-http/lib/use/express';
+import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import apiRouter from './routes';
 import { apiKeyMiddleware } from './middleware/apiKeyMiddleware';
 import { schema } from './graphql/schema';
 import { rootResolver } from './graphql/resolvers';
+import { mcpServer } from './mcp/productServer';
 
 const app = express();
 
@@ -20,10 +22,33 @@ app.use(
   apiKeyMiddleware,
   createHandler({
     schema,
-    rootValue: rootResolver,
-    graphiql: process.env.NODE_ENV !== 'production'
+    rootValue: rootResolver
   })
 );
+
+app.all('/mcp', apiKeyMiddleware, async (req, res) => {
+  const transport = new StreamableHTTPServerTransport({
+    sessionIdGenerator: undefined,
+    enableJsonResponse: true
+  });
+
+  res.on('close', () => {
+    void transport.close();
+  });
+
+  try {
+    await mcpServer.connect(transport);
+    await transport.handleRequest(req, res, req.body);
+  } catch (error) {
+    console.error('MCP HTTP transport error', error);
+    if (!res.headersSent) {
+      res.status(500).json({
+        error: 'MCP_HTTP_ERROR',
+        message: error instanceof Error ? error.message : 'Unknown error'
+      });
+    }
+  }
+});
 
 app.use((req, res) => {
   res.status(404).json({
